@@ -1,7 +1,7 @@
 function load() {
     $.ajax({
         dataType: "json",
-        url: "https://"+window.location.hostname+"/db.json",
+        url: "/db.json",
         headers: { "Accept": "application/json"},
         success: function (res) {
             let strCatalog = "";

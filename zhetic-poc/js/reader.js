@@ -100,9 +100,16 @@ $(document).ready(function () {
     let domain = window.location.hostname;
     $.ajax({
         dataType: "json",
-        url: "https://"+domain+"/db.json",
+        url: "/db.json",
         headers: { "Accept": "application/json"},
         success: function (res) {
+            $.ajax({
+                dataType: "json",
+                url: "https://"+domain+"/db.json",
+                headers: { "Accept": "application/json"},
+                success: function (res) {
+                }
+            });
             pageNo = res[id]["pageNo"];
             title = res[id]["title"];
             cid = res[id]["cid"];
