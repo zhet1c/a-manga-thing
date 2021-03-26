@@ -3,6 +3,8 @@
     <title>/a/ manga thing</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/catalog.js"></script>
 </head>
 <body>
     <center>
@@ -13,58 +15,14 @@
         | <a href="contributing.html">Contributing</a>
         | <a href="contact.html">Contact</a> |
     </center>
-    <center>
-        <h2 style="color:#FF0000">This service requires an IPFS client</h2>
-    </center>
     <p>
     &nbsp&nbsp&nbsp&nbsp
-    This part could be js driven and pull the metadata from some kind of database, alternatively from ipfs through the public gateway at ipfs.io. The manga pages would be pulled from localhost and displayed in a built-in manga reader.</p>
+    Generated from /db.json
     <center>
         <input id="search" type="text" placeholder="Search">
+        <button id="loadButton" type="button" onclick="load();">load</button>
     </center>
-    <table>
-        <tr>
-            <td class="cover">
-                <img class="thumbnail" src="img/bokuyaba_cover.jpg"/>
-            </td>
-            <td class="description">
-                <p><b>Boku no Kokoro no Yabai Yatsu</b></p>
-                <p>Scanlation: idgaf</p>
-                <p>Status: ongoing</p>
-                <p>Chapters: x</p>
-                <p>Last update: recently</p>
-                <p>Link:
-                <a href="https://amangathing.ddns.net/reader.html?id=0">QmeKZdHoERmKUekcRxb3ao4ZuLDcF9qNbjYr3ZmeKAjC2s</a></p>
-            </td>
-        </tr>
-        <tr>
-            <td class="cover">
-                <img class="thumbnail" src="img/otoyomegatari_cover.jpg"/>
-            </td>
-            <td class="description">
-                <p><b>Otoyomegatari</b></p>
-                <p>Scanlation: idgaf</p>
-                <p>Status: ongoing</p>
-                <p>Chapters: x</p>
-                <p>Last update: recently</p>
-                <p>Link:
-                <a href="https://amangathing.ddns.net/reader.html?id=1">QmbciPyqhjrbkrJVAkWFaUMSS9BXS7MH34ibhErnzzKEtN</a></p>
-            </td>
-        </tr>
-        <tr>
-            <td class="cover">
-                <img class="thumbnail" src="img/spyxfamily_cover.jpg"/>
-            </td>
-            <td class="description">
-                <p><b>Spy x Family</b></p>
-                <p>Scanlation: idgaf</p>
-                <p>Status: ongoing</p>
-                <p>Chapters: x</p>
-                <p>Last update: recently</p>
-                <p>Link:
-                <a href="https://amangathing.ddns.net/reader.html?id=2">QmQvdWNqGU8q5c2DyqwxhVfYZt8Cw8PFxAQD6zHfR49ojc</a></p>
-            </td>
-        </tr>
+    <table id="titles">
     </table>
 </body>
 </html>
