@@ -97,9 +97,10 @@ $(document).ready(function () {
 
     let url = new URL(window.location.href);
     let id = url.searchParams.get("id");
+    let domain = window.location.hostname;
     $.ajax({
         dataType: "json",
-        url: "https://amangathing.ddns.net/db.json",
+        url: "http://"+domain+"/db.json",
         headers: { "Accept": "application/json"},
         success: function (res) {
             pageNo = res[id]["pageNo"];
@@ -109,7 +110,7 @@ $(document).ready(function () {
             $("#titlebarText").html(`${title}`);
             $("title").html(`${title}`);
             for (let i = 1; i <= pageNo; i++) {
-                $("#pageView").append(`<img draggable="false" class="imageView" id="image${i}" src="http://${cid}.ipfs.localhost:8080/${i}.jpg">`);
+                $("#pageView").append(`<img draggable="false" class="imageView" id="image${i}" src="https://ipfs.io/ipfs/${cid}/${i}.jpg">`);
                 $(`#image${i}`).hide();
             }
             loadPage();
