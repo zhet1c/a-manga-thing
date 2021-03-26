@@ -106,7 +106,7 @@ $(document).ready(function () {
             pageNo = 0;
             $.ajax({
                 dataType: "json",
-                url: "http://ipfs.io/api/v0/ls/"+res[id]["cid"],
+                url: "https://ipfs.io/api/v0/ls/"+res[id]["cid"],
                 headers: { "Accept": "application/json"},
                 success: function (r) {
                     pageNo = r["Objects"][0]["Links"].length;
