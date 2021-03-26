@@ -100,7 +100,7 @@ $(document).ready(function () {
     let domain = window.location.hostname;
     $.ajax({
         dataType: "json",
-        url: "http://"+domain+"/db.json",
+        url: "https://"+domain+"/db.json",
         headers: { "Accept": "application/json"},
         success: function (res) {
             pageNo = res[id]["pageNo"];
