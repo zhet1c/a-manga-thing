@@ -1,0 +1,30 @@
+body {
+    font-family: 'Courier New', monospace;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+}
+
+table {
+    width: 100%;
+}
+
+.thumbnail {
+    height: 250px;
+    width: 175px;
+}
+
+.cover {
+    height: 250px;
+    width: 175px;
+}
+
+.description {
+    padding: 25px;
+    vertical-align: top;
+}
+
+#search {
+    width: 50%;
+    height: 15px;
+}
