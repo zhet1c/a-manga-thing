@@ -103,24 +103,25 @@ $(document).ready(function () {
         url: "/db.json",
         headers: { "Accept": "application/json"},
         success: function (res) {
+            pageNo = 0;
             $.ajax({
                 dataType: "json",
-                url: "https://"+domain+"/db.json",
+                url: "http://ipfs.io/api/v0/ls/"+res[id]["cid"],
                 headers: { "Accept": "application/json"},
-                success: function (res) {
+                success: function (r) {
+                    pageNo = r["Objects"][0]["Links"].length;
+                    title = res[id]["title"];
+                    cid = res[id]["cid"];
+                    $("#pageCounter").html(`${pageCurrent}/${pageNo}`);
+                    $("#titlebarText").html(`${title}`);
+                    $("title").html(`${title}`);
+                    for (let i = 1; i <= pageNo; i++) {
+                        $("#pageView").append(`<img draggable="false" class="imageView" id="image${i}" src="https://ipfs.io/ipfs/${cid}/${i}.jpg">`);
+                        $(`#image${i}`).hide();
+                    }
+                    loadPage();
                 }
             });
-            pageNo = res[id]["pageNo"];
-            title = res[id]["title"];
-            cid = res[id]["cid"];
-            $("#pageCounter").html(`${pageCurrent}/${pageNo}`);
-            $("#titlebarText").html(`${title}`);
-            $("title").html(`${title}`);
-            for (let i = 1; i <= pageNo; i++) {
-                $("#pageView").append(`<img draggable="false" class="imageView" id="image${i}" src="https://ipfs.io/ipfs/${cid}/${i}.jpg">`);
-                $(`#image${i}`).hide();
-            }
-            loadPage();
         }
     });
 
