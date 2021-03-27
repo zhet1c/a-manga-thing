@@ -172,6 +172,10 @@ document.getElementById("fitButton").addEventListener("click", function (e) {
     loadPage();
 });
 
+document.getElementById("invertButton").addEventListener("click", function (e) {
+    invertPage();
+});
+
 document.getElementById("titlebarContainer").addEventListener("mouseenter", function () {
     document.getElementById("titlebar").style.visibility = "visible";
 });
