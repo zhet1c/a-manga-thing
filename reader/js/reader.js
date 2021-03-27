@@ -32,7 +32,8 @@ function loadPage() {
     }
 }
 
-function nextPage() {
+// Goto next page or previous page. Left is next page by default.
+var rightPage = function () {
     if(layoutCurrent == "double"){
         if(pageCurrent+2 <= pageNo){
             pageCurrent += 2;
@@ -46,7 +47,7 @@ function nextPage() {
     loadPage();
 }
 
-function previousPage() {
+var leftPage = function () {
     if(layoutCurrent == "double"){
         if(pageCurrent-2 >= 1){
             pageCurrent -= 2;
@@ -58,6 +59,11 @@ function previousPage() {
         }
     }
     loadPage();
+}
+
+// Inversion between left-to-right and right-to-left
+function invertPage() {
+    [leftPage, rightPage] = [rightPage, leftPage];
 }
 
 function layoutSingle(){
@@ -118,24 +124,27 @@ document.addEventListener("keydown", function (e) {
         case 39:
         case 76:
             console.log("right");
-            previousPage();
+            rightPage();
             break;
         case 37:
         case 72:
             console.log("left");
-            nextPage();
+            leftPage();
             break;
+        case 73:
+            invertPage();
+            console.log("invert_controls");
         default: return;
     }
     e.preventDefault();
 });
 
 document.getElementById("pageLeft").addEventListener("click", function (e) {
-    nextPage();
+    leftPage();
 });
 
 document.getElementById("pageRight").addEventListener("click", function (e) {
-    previousPage();
+    rightPage();
 });
 
 document.getElementById("downloadButton").addEventListener("click", function (e) {
@@ -161,6 +170,10 @@ document.getElementById("fitButton").addEventListener("click", function (e) {
 
     }
     loadPage();
+});
+
+document.getElementById("invertButton").addEventListener("click", function (e) {
+    invertPage();
 });
 
 document.getElementById("titlebarContainer").addEventListener("mouseenter", function () {
