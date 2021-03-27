@@ -199,8 +199,8 @@ xmlhttp.onreadystatechange = function () {
 
         document.getElementById("titlebar").style.visibility = "hidden";
 
-        document.getElementById("pageCounter").innerHtml = `${pageCurrent}/${pageNo}`;
-        document.getElementById("titlebarText").innerHtml = `${title}`;
+        document.getElementById("pageCounter").textContent = `${pageCurrent}/${pageNo}`;
+        document.getElementById("titlebarText").textContent = `${title}`;
         document.title = `${title}`;
         document.getElementById("pageView").innerHtml = "";
 
