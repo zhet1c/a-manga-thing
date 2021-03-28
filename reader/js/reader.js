@@ -238,7 +238,7 @@ xmlhttp.onreadystatechange = function () {
         }
     }
 }
-xmlhttp.open("GET", "https://amangathing.ddns.net/db.json", true);
+xmlhttp.open("GET", "/db.json", true);
 xmlhttp.send();
 
 
