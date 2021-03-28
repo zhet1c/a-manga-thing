@@ -19,7 +19,7 @@ function load() {
                             <p>Last update: ?</p>\
                             <p>\
                                 Link:\
-                                <a href="reader.html?id='+manga["id"]+'">reader</a>\
+                                <a href="reader.html?manga='+manga["id"]+'">reader</a>\
                             </p>\
                         </td>\
                     </tr>';
@@ -28,7 +28,7 @@ function load() {
             document.getElementById("titles").innerHTML = strCatalog;
         }
     }
-    xmlhttp.open("GET", "https://amangathing.ddns.net/db.json", true);
+    xmlhttp.open("GET", "/db.json", true);
     xmlhttp.send();
 }
 
