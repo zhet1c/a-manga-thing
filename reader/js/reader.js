@@ -14,10 +14,8 @@ var chapter = 0;
 // ---------------------------------------------------------
 
 function loadPage() {
-    console.log("loading page", pageCurrent, "out of", pageNo);
     if(pageCurrent <= pageNo && pageCurrent > 0){
         for(let i = 1; i <= pageNo; i++){
-            console.log(i);
             document.getElementById(`image${i}`).style.visibility = "hidden";
         }
         if(layoutCurrent == "double"){
@@ -70,7 +68,6 @@ function layoutSingle(){
     layoutCurrent = "single";
     fitHeight();
     for (let i = 1; i <= pageNo; i++) {
-        console.log(`image${i}`);
         document.getElementById(`image${i}`).className = "imageView";
     }
     document.getElementById("layoutIcon").src = "img/single.png";
@@ -118,22 +115,18 @@ function fitHeight(){
 // ---------------------------------------------------------
 
 document.addEventListener("keydown", function (e) {
-    console.log("key press");
     e = e || window.event;
     switch (e.keyCode) {
         case 39:
         case 76:
-            console.log("right");
             rightPage();
             break;
         case 37:
         case 72:
-            console.log("left");
             leftPage();
             break;
         case 73:
             invertPage();
-            console.log("invert_controls");
         default: return;
     }
     e.preventDefault();
@@ -198,12 +191,10 @@ if(url.searchParams.has("chapter")){
 fetch("/db.json")
 .then(res => res.json())
 .then(function (res) {
-   console.log(res);
    pageNo = res[manga].chapters[chapter].pages;
    // "https://ipfs.io/api/v0/ls/"+res[manga][chapter]["cid"];
    title = res[manga].title;
    cid = res[manga].cid;
-   console.log(pageNo, title, cid);
 
 // --------------------------------------------------------
 // Initialize
@@ -224,7 +215,6 @@ fetch("/db.json")
        document.getElementById("pageView").appendChild(img);
    }
 
-   console.log(document.getElementById("pageView").innerHtml);
 
     if(pageNo > 0){
         layoutSingle();
@@ -232,7 +222,6 @@ fetch("/db.json")
         loadPage();
     }
     else{
-        console.log("no pages to load");
     }
 });
 

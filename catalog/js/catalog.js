@@ -2,7 +2,6 @@ function load() {
     fetch("/db.json")
     .then(res => res.json())
     .then(function (res) {
-        console.log(res);
         var strCatalog = "";
         res.forEach(manga => {
             strCatalog += '<tr>\
@@ -22,7 +21,6 @@ function load() {
                 </td>\
             </tr>';
         });
-        console.log(strCatalog);
         document.getElementById("titles").innerHTML = strCatalog;
     });
 }
