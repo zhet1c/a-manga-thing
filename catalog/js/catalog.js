@@ -1,5 +1,5 @@
 function load() {
-    fetch("https://amangathing.ddns.net/db.json")
+    fetch("/db.json")
     .then(res => res.json())
     .then(function (res) {
         console.log(res);
