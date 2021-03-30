@@ -1,27 +1,54 @@
 function load() {
-    fetch("/db.json")
+    fetch("https://amangathing.ddns.net/db.json")
     .then(res => res.json())
     .then(function (res) {
-        var strCatalog = "";
+        var table = document.getElementById("titles");
         res.forEach(manga => {
-            strCatalog += '<tr>\
-                <td class="cover">\
-                    <img class="thumbnail" src="img/covers/'+manga["id"]+'.jpg"/>\
-                </td>\
-                <td class="description">\
-                    <p><b>'+manga["title"]+'</b></p>\
-                    <p>Scanlation: ?</p>\
-                    <p>Status: ?</p>\
-                    <p>Chapters: ?</p>\
-                    <p>Last update: ?</p>\
-                    <p>\
-                        Link:\
-                        <a href="reader.html?manga='+manga["id"]+'">reader</a>\
-                    </p>\
-                </td>\
-            </tr>';
+            var row = document.createElement("tr");
+
+            var cover = document.createElement("td");
+            cover.className = "cover";
+            cover.appendChild(Object.assign(
+                document.createElement("img"),
+                {className: "thumbnail", src: "img/covers/"+manga["id"]+".jpg"}
+            ));
+
+            var desc = document.createElement("td");
+            desc.className = "description";
+            desc.appendChild(document.createElement("p"))
+            .appendChild(Object.assign(
+                document.createElement("b"),
+                {textContent: manga["title"]}
+            ));
+            desc.appendChild(Object.assign(
+                document.createElement("p"),
+                {textContent: "Scanlation: ?"}
+            ));
+            desc.appendChild(Object.assign(
+                document.createElement("p"),
+                {textContent: "Status: ?"}
+            ));
+            desc.appendChild(Object.assign(
+                document.createElement("p"),
+                {textContent: "Chapters: ?"}
+            ));
+            desc.appendChild(Object.assign(
+                document.createElement("p"),
+                {textContent: "Last Update: ?"}
+            ));
+            desc.appendChild(Object.assign(
+                document.createElement("p"),
+                {textContent: "Link: "}
+            ))
+            .appendChild(Object.assign(
+                document.createElement("a"),
+                {href: "reader.html?manga="+manga["id"], textContent: "reader"}
+            ));
+
+            row.appendChild(cover);
+            row.appendChild(desc);
+            table.appendChild(row);
         });
-        document.getElementById("titles").innerHTML = strCatalog;
     });
 }
 
