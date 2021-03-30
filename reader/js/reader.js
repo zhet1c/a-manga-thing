@@ -188,33 +188,33 @@ if(url.searchParams.has("chapter")){
 // parse json data
 // ---------------------------------------------------------
 
-fetch("/db.json")
+fetch("https://amangathing.ddns.net/db.json")
 .then(res => res.json())
 .then(function (res) {
-   pageNo = res[manga].chapters[chapter].pages;
-   // "https://ipfs.io/api/v0/ls/"+res[manga][chapter]["cid"];
-   title = res[manga].title;
-   cid = res[manga].cid;
+    pageNo = res[manga].chapters[chapter].pages;
+    // "https://ipfs.io/api/v0/ls/"+res[manga][chapter]["cid"];
+    title = res[manga].title;
+    cid = res[manga].cid;
 
 // --------------------------------------------------------
 // Initialize
 // --------------------------------------------------------
 
-   document.getElementById("titlebar").style.visibility = "hidden";
-   document.getElementById("pageCounter").textContent = `${pageCurrent}/${pageNo}`;
-   document.getElementById("titlebarText").textContent = `${title}`;
-   document.title = `${title}`;
-   document.getElementById("pageView").innerHtml = "";
+    document.getElementById("titlebar").style.visibility = "hidden";
+    document.getElementById("pageCounter").textContent = `${pageCurrent}/${pageNo}`;
+    document.getElementById("titlebarText").textContent = `${title}`;
+    document.title = `${title}`;
+    document.getElementById("pageView").innerHtml = "";
 
-   for (let i = 1; i <= pageNo; i++) {
-       var img = document.createElement("img");
-       img.setAttribute("draggable", "false");
-       img.setAttribute("src", `https://ipfs.io/ipfs/${cid}/${i}.jpg`);
-       img.id = `image${i}`;
-       img.style.visibility = "hidden";
-       document.getElementById("pageView").appendChild(img);
-   }
-
+    var pageView = document.getElementById("pageView");
+    for (let i = 1; i <= pageNo; i++) {
+        var img = document.createElement("img");
+        img.setAttribute("draggable", "false");
+        img.setAttribute("src", `https://ipfs.io/ipfs/${cid}/${i}.jpg`);
+        img.id = `image${i}`;
+        img.style.visibility = "hidden";
+        pageView.appendChild(img);
+    }
 
     if(pageNo > 0){
         layoutSingle();
@@ -222,6 +222,7 @@ fetch("/db.json")
         loadPage();
     }
     else{
+        document.getElementById("titlebarText").textContent = "Nothing to load";
     }
 });
 
