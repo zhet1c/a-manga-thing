@@ -188,7 +188,7 @@ if(url.searchParams.has("chapter")){
 // parse json data
 // ---------------------------------------------------------
 
-fetch("https://amangathing.ddns.net/db.json")
+fetch("/db.json")
 .then(res => res.json())
 .then(function (res) {
     pageNo = res[manga].chapters[chapter].pages;
